@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     status: false, // means user is not authenticated currently
-    userData: null // means there is no user is no user data
+    userData: null // means there is no user user data
 }
 
 const authSlice = createSlice({
