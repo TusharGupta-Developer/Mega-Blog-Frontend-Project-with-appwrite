@@ -17,7 +17,7 @@ const authSlice = createSlice({
 
             state.userData = action.payload.userData; //sets userData to just the userData property of the payload object.
 
-            // Self state = action.payload.userData; overwrites the entire state with just userData, which is usually incorrect.(not recommended)
+            // Self: state = action.payload.userData; overwrites the entire state with just userData, which is usually incorrect.(not recommended)
         },
         logout: (state) => {
             state.status = false;
