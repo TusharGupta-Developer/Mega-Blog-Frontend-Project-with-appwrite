@@ -66,6 +66,17 @@ export class AuthService {
 
         }
     }
+
+    async anonymousLogin() {
+        try {
+            const session = await this.account.createAnonymousSession();
+            return session;
+        } catch (error) {
+            console.log("Appwrite service :: anonymousLogin :: error", error);
+            throw error;
+        }
+    }
+    
 }
 
 const authService = new AuthService();

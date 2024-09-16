@@ -25,7 +25,6 @@ function App() {
           authService.anonymousLogin();
           dispatch(logout())
         }
-  
       }) // For successfully 
       .finally(() => {
         setLoading(false); // Ensure loading is set to false when done
