@@ -12,8 +12,10 @@ const Input = React.forwardRef(function Input({
         <div className="w-full">
             {/* if label is present */}
             {label && <label
-                className='block mb-1'>
+                className='block mb-1'
+                htmlFor={id}>
                 {label}
+                
             </label>}
 
             <input type={type}
