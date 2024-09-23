@@ -134,7 +134,7 @@ export class Service {
         }
     }
 
-    getFilePreview(fileID) {
+    getFilePreview(fileID) { //The getFilePreview(fileID) function is used to generate and return a (preview URL/like thumbmail) of a file stored in Appwrite's storage system. It is typically used to display images or other file types (like PDFs) in a smaller, preview format without retrieving the full file.
         this.storage.getFilePreview(
             conf.appwriteBucketID,
             fileID
