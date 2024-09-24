@@ -5,8 +5,6 @@ import { Button, Input, Logo } from "./index"
 import { useDispatch } from 'react-redux'
 import authService from '../appwrite/auth'
 import { useForm } from 'react-hook-form'
-import { data } from 'autoprefixer'
-
 
 
 function Login() {
@@ -31,8 +29,7 @@ function Login() {
     }
 
     return (
-        <div
-            className='flex items-center justify-center w-full'>
+        <div className='flex items-center justify-center w-full'>
             <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
             >
                 <div className="mb-2 flex justify-center">
@@ -57,20 +54,44 @@ function Login() {
                 <form onSubmit={handleSubmit(login)} className='mt-8'>
                     {/* handleSubmit() is a method, where we give our method(that way form wil handle) */}
                     <div className="space-x-5">
+
+                        {/* Email Input */}
                         <Input
                             label="Email: "
                             placeholder="Enter your Email"
                             type="email"
+                            // The goal of the following code is to take an input (an email address) from a user and validate it to ensure it's in the correct format (like example@domain.com). If the email is missing or doesn't match a valid format, it will give an error message(diplay: Email address must be valid").
                             {...register("email", {
                                 required: true,
                                 validate: {
-                                    matchPatern: (value) => {
-
-                                    }
+                                    matchPatern: (value) => /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/igm.
+                                        test(value) || "Email address must be valid address "
                                 }
 
                             })}
                         />
+
+                        {/* Password Input */}
+                        <Input
+                            label="Password"
+                            type="password"
+                            placeholder="Enter your password"
+                            {...register("password", {
+                                required: true,
+                                validate: {
+                                    matchPattern: (value) =>
+                                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+                                            .test(value) || "Password must be at least 8 characters long, contain uppercase, lowercase, number, and special character"
+                                }
+                            })}
+                        />
+
+                        {/* Submit Button */}
+                        <button type="submit"
+                            className="w-full" >
+                            Sign In
+                        </button>
+
                     </div>
                 </form>
 
