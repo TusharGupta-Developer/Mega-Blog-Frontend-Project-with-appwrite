@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 
+//This component is made to control access to protected routes by redirecting users based on their authentication status while displaying a loading state during navigation checks.
 export default function Protected({ children, authentication = true }) {
 
     const navigate = useNavigate();
