@@ -36,10 +36,11 @@ export class Service {
         } catch (error) {
             console.log("Appwrite service :: createPost :: error", error);
         }
+        //On success, it returns an "object({})" containing the newly created document's metadata and data.
     }
 
     //Update a document by its unique ID. Using the patch method you can pass only specific fields that will get updated.
-    async updatePost(slug, { title, content, featuredImage, status }) { // 1st parameter is slug because slug willl be document ID . 
+    async updatePost(slug, { title, content, featuredImage, status }) { // 1st parameter is slug because slug will be document ID . 
         // And we does not take userID in 2nd parameter object because we only give edit optipon only to user ? 
 
         try {
@@ -50,11 +51,12 @@ export class Service {
 
                 [title, content, featuredImage, status] // queries (optional)
             )
+            return updatedDocument; // Return the updated document
 
         } catch (error) {
             console.log("Appwrite service :: updatePost :: error", error);
         }
-
+        // this function will return the updated document if the update is successful.
     }
 
     //Delete a document
@@ -118,6 +120,7 @@ export class Service {
             console.log("Appwrite service :: uploadFile :: error", error);
             return false;
         }
+        // If the file upload is successful, the method returns object of metadata about the uploaded file such as its ID, URL, and other attributes. IF not return false.
     }
 
     async deleteFile(fileID) { // In uploadfile it return fileId , and this fileID will be pass to featuredImage during creation of Post.
