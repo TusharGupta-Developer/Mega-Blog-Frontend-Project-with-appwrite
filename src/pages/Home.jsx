@@ -1,15 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import service, { Service } from './../appwrite/config';
 import { useNavigate } from 'react-router-dom';
 import { PostCard } from '../componenets';
+// import Container from '../componenets/index';
+import Container from './../componenets/Container/Container';
+
 
 
 
 function Home() {
-    const [posts, setPosts] = useState(null)
+    const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        service.getPost().then((post) => {
+        service.getPosts().then((post) => {
             if (post) {
                 setPosts(post.documents)
             }

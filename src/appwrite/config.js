@@ -76,20 +76,23 @@ export class Service {
 
     }
 
-    // Get a document by its unique ID(here it is slug)
     async getPost(slug) {
-
+        console.log("Getting post with slug:", slug); // Debugging log
         try {
+            if (!slug) {
+                throw new Error("Slug is undefined or empty");
+            }
             return await this.databases.getDocument(
                 conf.appwriteDatabaseID,
                 conf.appwriteCollectionID,
-                slug
-            )
+                slug // Ensure this is a valid document ID
+            );
         } catch (error) {
             console.log("Appwrite service :: getPost :: error", error);
             return false;
         }
     }
+    
 
     //Get a list of all the user's documents in a given collection. You can use the query params to filter your results.
     async getPosts(queries = [Query.equal("status", "active")]) { // if status is active then it will return documents. And for key(here status) we have to make index in appwrite
