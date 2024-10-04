@@ -6,6 +6,7 @@ import './App.css'
 import Header from './componenets/Header/Header';
 // import Header from './componenets/index'
 import Footer from './componenets/Footer/Footer';
+import { Outlet } from 'react-router-dom'
 
 
 
@@ -45,7 +46,7 @@ function App() {
         <div className="w-full block">
           <Header />
           <main>
-            <outlet/>
+            <Outlet />
           </main>
           <Footer />
         </div>
