@@ -30,8 +30,7 @@ function Login() {
 
     return (
         <div className='flex items-center justify-center w-full'>
-            <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
-            >
+            <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
                 <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
                         <Logo width="100%" />
@@ -51,23 +50,21 @@ function Login() {
                 {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
                 {/* {Form} */}
-                <form onSubmit={handleSubmit(login)} className='mt-8'>
-                    {/* handleSubmit() is a method, where we give our method(that way form wil handle) */}
-                    <div className="space-x-5">
+                <form onSubmit={handleSubmit(login)} className='mt-8 '>
+                    <div className="space-y-5">
 
                         {/* Email Input */}
                         <Input
                             label="Email: "
                             placeholder="Enter your Email"
                             type="email"
-                            // The goal of the following code is to take an input (an email address) from a user and validate it to ensure it's in the correct format (like example@domain.com). If the email is missing or doesn't match a valid format, it will give an error message(diplay: Email address must be valid").
+                            className="w-full" // Set full width for input
                             {...register("email", {
                                 required: true,
                                 validate: {
-                                    matchPatern: (value) => /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/igm.
-                                        test(value) || "Email address must be valid address "
+                                    matchPattern: (value) => /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/igm
+                                        .test(value) || "Email address must be valid address "
                                 }
-
                             })}
                         />
 
@@ -76,6 +73,7 @@ function Login() {
                             label="Password"
                             type="password"
                             placeholder="Enter your password"
+                            className="w-full" // Set full width for input
                             {...register("password", {
                                 required: true,
                                 validate: {
@@ -87,17 +85,15 @@ function Login() {
                         />
 
                         {/* Submit Button */}
-                        <button type="submit"
-                            className="w-full" >
+                        <Button type="submit" className="w-full"> {/* Set full width for button */}
                             Sign In
-                        </button>
-
+                        </Button>
                     </div>
                 </form>
-
             </div>
         </div>
-    )
+    );
+
 }
 
 export default Login

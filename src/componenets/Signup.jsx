@@ -93,9 +93,9 @@ function Signup() {
                         {errors.password && <p className='text-red-600'>{errors.password.message}</p>}
 
                         {/* Submit Button */}
-                        <button type='submit' className='w-full'>
+                        <Button type='submit' className='w-full'>
                             Create Account
-                        </button>
+                        </Button>
 
                     </div>
 
