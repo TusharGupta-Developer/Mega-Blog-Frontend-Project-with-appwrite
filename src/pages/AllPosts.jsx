@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { PostCard, Container } from '../componenets'
 import service from '../appwrite/config'
-import PostCard from './../componenets/PostCard';
 
 
 function AllPosts() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Editor } from '@tinymce/tinymce-react' // Editor came from "tinymce" thie was installed in statrting.
+import { Editor } from '@tinymce/tinymce-react' // Editor came from "tinymce" this was installed in statrting.
 import { Controller } from 'react-hook-form'
 
 
@@ -22,7 +22,7 @@ export default function RTE({ name, control, label,
                             initialValue: "defaultValue",
                             height: 500,
                             menubar: true, // Displays a menu bar with options like File, Edit, View, etc.
-                            
+
                             // Add extra functionality to the editor (e.g., lists, media, tables, word count).
                             plugins: [ 
                                 'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
