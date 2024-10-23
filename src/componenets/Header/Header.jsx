@@ -1,12 +1,12 @@
 import React from 'react'
-import {Container, Logo } from "../index"
+import { Container, Logo } from "../index"
 import { Link, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import LogoutBtn from './LogoutBtn';
 
 function Header() {
-  const authStatus = useSelector((state) => state.auth?.status) || false; // Ensure it's either true or false
+  const authStatus = useSelector((state) => state.auth.status)
   const navigate = useNavigate()
 
 

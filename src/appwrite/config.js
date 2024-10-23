@@ -18,18 +18,19 @@ export class Service {
     }
 
     //To Create Post(To create a document) use the createDocument method.
-    async createPost({ title, slug, content, featuredImage, status, userID }) {
+    async createPost({ title, slug, content, featuredImage, status, userId }) {
         try {
             await this.databases.createDocument(
                 conf.appwriteDatabaseID,
                 conf.appwriteCollectionID,
-                slug, // those slug value will be passed it will become documents ID
+                slug, // Generate a unique ID
+                 // those slug value will be passed it will become documents ID
                 { //  information u wana stored
                     title,
                     content,
                     featuredImage,
                     status,
-                    userID
+                    userId
                 }
 
             )
@@ -38,21 +39,20 @@ export class Service {
         }
         //On success, it returns an "object({})" containing the newly created document's metadata and data.
     }
+    
 
     //Update a document by its unique ID. Using the patch method you can pass only specific fields that will get updated.
     async updatePost(slug, { title, content, featuredImage, status }) { // 1st parameter is slug because slug will be document ID . 
         // And we does not take userID in 2nd parameter object because we only give edit optipon only to user ? 
 
         try {
-            await this.databases.updateDocument(
+            return await this.databases.updateDocument(
                 conf.appwriteDatabaseID,
                 conf.appwriteCollectionID,
                 slug,
 
-                [title, content, featuredImage, status] // queries (optional)
+                { title, content, featuredImage, status } // Correct usage
             )
-            return updatedDocument; // Return the updated document
-
         } catch (error) {
             console.log("Appwrite service :: updatePost :: error", error);
         }
@@ -141,7 +141,7 @@ export class Service {
     }
 
     getFilePreview(fileID) { //The getFilePreview(fileID) function is used to generate and return a (preview URL/like thumbmail) of a file stored in Appwrite's storage system. It is typically used to display images or other file types (like PDFs) in a smaller, preview format without retrieving the full file.
-        this.storage.getFilePreview(
+        return this.storage.getFilePreview(
             conf.appwriteBucketID,
             fileID
         )

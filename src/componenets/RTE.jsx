@@ -19,7 +19,7 @@ export default function RTE({ name, control, label,
                     <Editor
                         initialValue={defaultValue}
                         init={{
-                            initialValue: "defaultValue",
+                            initialValue: defaultValue,
                             height: 500,
                             menubar: true, // Displays a menu bar with options like File, Edit, View, etc.
 
@@ -36,7 +36,7 @@ export default function RTE({ name, control, label,
                                 'removeformat | help',
                             content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
                         }}
-                        onEditorChange={onchange} // When editor content changes, call onChange to update the form state
+                        onEditorChange={onChange} // When editor content changes, call onChange to update the form state
                     />
                 )}
             />

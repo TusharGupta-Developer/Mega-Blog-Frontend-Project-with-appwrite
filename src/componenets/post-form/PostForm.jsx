@@ -31,8 +31,7 @@ function PostForm({ post }) {
     /*--------- if post object is exists then update the post, if not then create it ---------*/
 
     if (post) {
-      const file = await data.image[0] ? service.uploadFile(data.image[0]) : null 
-
+      const file = data.image[0] ? await service.uploadFile(data.image[0]) : null;
       //for deleting old image
       if (file) { // true if data.image[0] is truthy and file get metadata of uploaded file
         await service.deleteFile(post.featuredImage) // featuredImage is an Id
@@ -57,14 +56,15 @@ function PostForm({ post }) {
         data.featuredImage = fileId
         const dbPost = await service.createPost({
           ...data,
-          userID: userData.$id
-        })
+          userId: userData.$id // Change userID to userId here
+        });
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`)
         }
       }
 
     }
+
   }
 
   const slugTransform = useCallback((value) => {
@@ -73,7 +73,7 @@ function PostForm({ post }) {
 
         .trim() // remove whitespace from both ends of a string
         .toLowerCase()
-        .replace(/[^a-zA-Z0-9\s]/g, '-') // Replaces any character that is NOT a letter, number, or space with a hyphen
+        .replace(/[^a-zA-Z\d\s]+/g, '-') // Replaces any character that is NOT a letter, number, or space with a hyphen
         .replace(/\s/g, '-'); // Replaces all spaces with hyphens
 
     } else {

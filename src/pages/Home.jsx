@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import service, { Service } from './../appwrite/config';
+import service from './../appwrite/config';
 import { useNavigate } from 'react-router-dom';
 import { PostCard } from '../componenets';
 // import Container from '../componenets/index';

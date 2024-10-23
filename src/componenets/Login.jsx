@@ -77,9 +77,8 @@ function Login() {
                             {...register("password", {
                                 required: true,
                                 validate: {
-                                    matchPattern: (value) =>
-                                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
-                                            .test(value) || "Password must be at least 8 characters long, contain uppercase, lowercase, number, and special character"
+                                    matchPattern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                                        "Email address must be a valid address",
                                 }
                             })}
                         />

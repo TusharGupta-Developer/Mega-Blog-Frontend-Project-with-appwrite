@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 export default function Protected({ children, authentication = true }) {
 
     const navigate = useNavigate();
-    const [loader, setLoader] = useState();  // Loader state to show a loading screen if needed
+    const [loader, setLoader] = useState(true);  // Loader state to show a loading screen if needed
     const authStatus = useSelector(state => state.auth.status)
 
     useEffect(() => {
@@ -19,7 +19,7 @@ export default function Protected({ children, authentication = true }) {
 
             // If the user is authenticated but shouldn't have access, redirect to the home page
         } else if (!authentication && authStatus !== authentication) { // Execute if {false && true !== true} = {false && false} = true 
-            useNavigate("/")
+            navigate("/")
         }
         // Note: authentication is send by user
 

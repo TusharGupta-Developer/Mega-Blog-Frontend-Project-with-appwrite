@@ -16,7 +16,7 @@ export class AuthService {
     }
 
     // For creating new user account
-    async createAccount({ email, password, name }) {
+   async createAccount({ email, password, name }) {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name)
 
@@ -33,7 +33,7 @@ export class AuthService {
         } catch (error) {
             throw error
         }
-    }
+    } 
     //After you've created your account, users can be logged in using the Create Email Session method.
     async login({ email, password }) {
         try {
@@ -76,7 +76,7 @@ export class AuthService {
             throw error;
         }
     }
-    
+
 }
 
 const authService = new AuthService();
