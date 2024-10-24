@@ -66,6 +66,7 @@ export class AuthService {
 
         }
     }
+    
 
     async anonymousLogin() {
         try {
